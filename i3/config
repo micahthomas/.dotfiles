@@ -1,0 +1,208 @@
+# mod
+set $mod Mod4
+
+# font
+font pango: System San Francisco Display 11
+
+# thin borders
+hide_edge_borders both
+
+# drag windows
+floating_modifier $mod
+
+# change focus
+bindsym $mod+Left focus left
+bindsym $mod+Down focus down
+bindsym $mod+Up focus up
+bindsym $mod+Right focus right
+
+# lock
+bindsym $mod+Shift+x exec i3lock --color 475263
+
+# move focused window
+bindsym $mod+Shift+Left move left
+bindsym $mod+Shift+Down move down
+bindsym $mod+Shift+Up move up
+bindsym $mod+Shift+Right move right
+
+# split in horizontal orientation
+bindsym $mod+h split h
+
+# split in vertical orientation
+bindsym $mod+v split v
+
+# enter fullscreen mode for the focused container
+bindsym $mod+f fullscreen toggle
+
+# change container layout
+bindsym $mod+s layout stacking
+bindsym $mod+w layout tabbed
+bindsym $mod+e layout toggle split
+
+# toggle tiling / floating
+bindsym $mod+Shift+space floating toggle
+
+# change focus between tiling / floating windows
+bindsym $mod+b focus mode_toggle
+
+# focus the parent container
+bindsym $mod+a focus parent
+
+# 1: Internet & Network 
+# 2: Programming 
+# 3: Social Media & Email 
+# 4: Multi-Media 
+# 5: Gaming 
+# 6: Virtual Machines 
+# 7: System Monitoring 
+# 8: Office & Documents 
+# 9: Background 
+# 10: Other 
+set $workspace1 "1 "
+set $workspace2 "2 "
+set $workspace3 "3 "
+set $workspace4 "4 "
+set $workspace5 "5 "
+set $workspace6 "6 "
+set $workspace7 "7 "
+set $workspace8 "8 "
+set $workspace9 "9 "
+set $workspace10 "10 "
+
+# move focused container to workspace
+bindsym $mod+Shift+1 move container to workspace $workspace1
+bindsym $mod+Shift+2 move container to workspace $workspace2
+bindsym $mod+Shift+3 move container to workspace $workspace3
+bindsym $mod+Shift+4 move container to workspace $workspace4
+bindsym $mod+Shift+5 move container to workspace $workspace5
+bindsym $mod+Shift+6 move container to workspace $workspace6
+bindsym $mod+Shift+7 move container to workspace $workspace7
+bindsym $mod+Shift+8 move container to workspace $workspace8
+bindsym $mod+Shift+9 move container to workspace $workspace9
+bindsym $mod+Shift+0 move container to workspace $workspace10
+bindsym $mod+Shift+KP_1 move container to $workspace1
+bindsym $mod+Shift+KP_2 move container to $workspace2
+bindsym $mod+Shift+KP_3 move container to $workspace3
+bindsym $mod+Shift+KP_4 move container to $workspace4
+bindsym $mod+Shift+KP_5 move container to $workspace5
+bindsym $mod+Shift+KP_6 move container to $workspace6
+bindsym $mod+Shift+KP_7 move container to $workspace7
+bindsym $mod+Shift+KP_8 move container to $workspace8
+bindsym $mod+Shift+KP_9 move container to $workspace9
+bindsym $mod+Shift+KP_0 move container to $workspace10
+
+# switch to workspace
+bindsym $mod+1 workspace $workspace1
+bindsym $mod+2 workspace $workspace2
+bindsym $mod+3 workspace $workspace3
+bindsym $mod+4 workspace $workspace4
+bindsym $mod+5 workspace $workspace5
+bindsym $mod+6 workspace $workspace6
+bindsym $mod+7 workspace $workspace7
+bindsym $mod+8 workspace $workspace8
+bindsym $mod+9 workspace $workspace9
+bindsym $mod+0 workspace $workspace10
+bindsym $mod+KP_1 $workspace1
+bindsym $mod+KP_2 $workspace2
+bindsym $mod+KP_3 $workspace3
+bindsym $mod+KP_4 $workspace4
+bindsym $mod+KP_5 $workspace5
+bindsym $mod+KP_6 $workspace6
+bindsym $mod+KP_7 $workspace7
+bindsym $mod+KP_8 $workspace8
+bindsym $mod+KP_9 $workspace9
+bindsym $mod+KP_0 $workspace10
+
+# reload the configuration file
+bindsym $mod+Shift+c reload
+
+# restart i3 inplace
+bindsym $mod+Shift+r restart
+
+# exit i3
+bindsym $mod+Shift+e exec /home/micah/.i3/scripts/exit_menu
+
+
+# resize window (you can also use the mouse for that)
+mode "resize" {
+    bindsym h resize shrink width 10 px or 10 ppt
+    bindsym j resize grow height 10 px or 10 ppt
+    bindsym k resize shrink height 10 px or 10 ppt
+    bindsym l resize grow width 10 px or 10 ppt
+
+    bindsym Left resize shrink width 10 px or 10 ppt
+    bindsym Down resize grow height 10 px or 10 ppt
+    bindsym Up resize shrink height 10 px or 10 ppt
+    bindsym Right resize grow width 10 px or 10 ppt
+
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+}
+
+# resize mode
+bindsym $mod+r mode "resize"
+
+set $bg-color 	         #2f343f
+set $inactive-bg-color   #2f343f
+set $text-color          #f3f4f5
+set $inactive-text-color #676E7D
+set $urgent-bg-color     #E53935
+
+# window colors
+#                       border              background         text                 indicator
+client.focused          $bg-color           $bg-color          $text-color          #00ff00
+client.unfocused        $inactive-bg-color $inactive-bg-color $inactive-text-color #00ff00
+client.focused_inactive $inactive-bg-color $inactive-bg-color $inactive-text-color #00ff00
+client.urgent           $urgent-bg-color    $urgent-bg-color   $text-color          #00ff00
+
+# bar
+bar {
+  	status_command i3blocks -c /home/micah/.i3/i3blocks.conf
+	colors {
+		background $bg-color
+	    	separator #757575
+		#                  border             background         text
+		focused_workspace  $bg-color          $bg-color          $text-color
+		inactive_workspace $inactive-bg-color $inactive-bg-color $inactive-text-color
+		urgent_workspace   $urgent-bg-color   $urgent-bg-color   $text-color
+	}
+}
+
+
+# sticky window
+bindsym $mod+Shift+s sticky toggle
+
+# workspace default monitors
+workspace $workspace1 output DP-1
+workspace $workspace2 output DP-1
+workspace $workspace3 output DP-1
+workspace $workspace4 output DP-1
+workspace $workspace5 output DP-1
+workspace $workspace6 output DP-1
+workspace $workspace9 output DP-1
+workspace $workspace10 output DP-5
+
+# media key-bindings
+bindsym XF86AudioRaiseVolume exec "amixer set Master -q 5%+ unmute"
+bindsym XF86AudioLowerVolume exec "amixer set Master -q 5%- unmute"
+bindsym XF86AudioMute exec "amixer set Master toggle"
+bindsym XF86AudioPlay exec playerctl play-pause
+bindsym XF86AudioPause exec playerctl play-pause
+bindsym XF86AudioNext exec playerctl next
+bindsym XF86AudioPrev exec playerctl previous
+
+# program keybindings
+bindsym $mod+Return exec i3-sensible-terminal
+bindsym $mod+Shift+q kill
+bindsym Print exec screenshot
+bindsym $mod+space exec --no-startup-id i3-dmenu-desktop --dmenu='rofi -i -dmenu -p "Launch: "'
+
+# startup
+exec_always --no-startup-id feh --bg-scale /home/micah/.wallpaper.jpg
+exec_always --no-startup-id xrandr --output DP-1 --pos 0x0 --output DP-5 --pos 1920x0
+exec_always --no-startup-id /home/micah/.xinitrc
+
+# Keys
+exec_always xmodmap -e "clear lock" #disable caps lock switch
+
+exec --no-startup-id compton -f
