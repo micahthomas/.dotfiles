@@ -7,6 +7,12 @@ font pango: System San Francisco Display 11
 # thin borders
 hide_edge_borders both
 
+# disable titlebars
+for_window [class="^.*"] border pixel 0
+
+# gaps
+gaps inner 10
+
 # drag windows
 floating_modifier $mod
 
@@ -48,26 +54,33 @@ bindsym $mod+b focus mode_toggle
 # focus the parent container
 bindsym $mod+a focus parent
 
-# 1: Internet & Network 
-# 2: Programming 
-# 3: Social Media & Email 
-# 4: Multi-Media 
-# 5: Gaming 
-# 6: Virtual Machines 
+# 1: Internet & Network 
+# 2: Programming 1 
+# 3: Programming 2 
+# 4: Programming 3 
+# 5: Programming 4 
+# 6: Chat & Email 
 # 7: System Monitoring 
-# 8: Office & Documents 
-# 9: Background 
-# 10: Other 
-set $workspace1 "1 "
-set $workspace2 "2 "
-set $workspace3 "3 "
-set $workspace4 "4 "
-set $workspace5 "5 "
-set $workspace6 "6 "
+# 8: Server Monitoring 
+# 9: Multi-Media 
+# 10: Terminals 
+set $workspace1 "1 "
+set $workspace2 "2 "
+set $workspace3 "3 "
+set $workspace4 "4 "
+set $workspace5 "5 "
+set $workspace6 "6 "
 set $workspace7 "7 "
-set $workspace8 "8 "
-set $workspace9 "9 "
-set $workspace10 "10 "
+set $workspace8 "8 "
+set $workspace9 "9 "
+set $workspace10 "10 "
+
+# workspace default windows
+assign [class="chrome"] $workspace1
+assign [class="Google Play Music Desktop Player"] $workspace9
+for_window [class="chrome" title=".*Gmail.*"] move to workspace $workspace6
+for_window [class="chrome" title=".*Hangouts.*"] move to workspace $workspace6
+for_window [class="Terminator" title=".*@.*"] move to workspace $workspace8
 
 # move focused container to workspace
 bindsym $mod+Shift+1 move container to workspace $workspace1
@@ -121,6 +134,7 @@ bindsym $mod+Shift+r restart
 
 # exit i3
 bindsym $mod+Shift+e exec /home/micah/.i3/scripts/exit_menu
+bindsym $mod+Shift+l exec dm-tool lock
 
 
 # resize window (you can also use the mouse for that)
@@ -157,6 +171,7 @@ client.urgent           $urgent-bg-color    $urgent-bg-color   $text-color      
 
 # bar
 bar {
+	height 40
   	status_command i3blocks -c /home/micah/.i3/i3blocks.conf
 	colors {
 		background $bg-color
@@ -179,6 +194,8 @@ workspace $workspace3 output DP-1
 workspace $workspace4 output DP-1
 workspace $workspace5 output DP-1
 workspace $workspace6 output DP-1
+workspace $workspace7 output DP-1
+workspace $workspace8 output DP-1
 workspace $workspace9 output DP-1
 workspace $workspace10 output DP-5
 
@@ -196,13 +213,15 @@ bindsym $mod+Return exec i3-sensible-terminal
 bindsym $mod+Shift+q kill
 bindsym Print exec screenshot
 bindsym $mod+space exec --no-startup-id i3-dmenu-desktop --dmenu='rofi -i -dmenu -p "Launch: "'
-
+bindsym $mod+Tab exec --no-startup-id rofi -show window
+bindsym $mod+F2 exec --no-startup-id rofi -show run
+bindsym $mod+F3 exec --no-startup-id rofi -show ssh
 # startup
 exec_always --no-startup-id feh --bg-scale /home/micah/.wallpaper.jpg
 exec_always --no-startup-id xrandr --output DP-1 --pos 0x0 --output DP-5 --pos 1920x0
 exec_always --no-startup-id /home/micah/.xinitrc
 
 # Keys
-exec_always xmodmap -e "clear lock" #disable caps lock switch
+#exec_always xmodmap -e "clear lock" #disable caps lock switch
 
 exec --no-startup-id compton -f
