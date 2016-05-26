@@ -2,7 +2,7 @@
 set $mod Mod4
 
 # font
-font pango: System San Francisco Display 11
+font pango: Cantarell Regular 12
 
 # thin borders
 hide_edge_borders both
@@ -81,6 +81,7 @@ assign [class="Google Play Music Desktop Player"] $workspace9
 for_window [class="chrome" title=".*Gmail.*"] move to workspace $workspace6
 for_window [class="chrome" title=".*Hangouts.*"] move to workspace $workspace6
 for_window [class="Terminator" title=".*@.*"] move to workspace $workspace8
+for_window [class="Deja-dup"] move to workspace $workspace7
 
 # move focused container to workspace
 bindsym $mod+Shift+1 move container to workspace $workspace1
