@@ -1,0 +1,55 @@
+! ------------------------------------------------------------------------------
+! ROFI Color theme
+! ------------------------------------------------------------------------------
+! Use extended color scheme
+rofi.color-enabled:                  true
+
+! Color scheme for normal row
+rofi.color-normal:                   #ffffff,#525d76,#f5f5f5,#5294e2,#ffffff
+
+! Color scheme for urgent row
+rofi.color-urgent:                   #ffffff,#dc322f,#f5f5f5,#5294e2,#dc322f
+
+! Color scheme for active row
+rofi.color-active:                   #ffffff,#c2cad0,#f5f5f5,#5294e2,#c2cad0
+
+! Color scheme window
+rofi.color-window:                   #ffffff,#f5f5f5
+
+! Separator style (none, dash, solid)
+rofi.separator-style:                solid
+
+
+! ------------------------------------------------------------------------------
+! ROFI Configuration
+! ------------------------------------------------------------------------------
+! Set the padding around rofi
+rofi.padding:				480
+
+! Set the number of options shown
+rofi.lines:				5
+
+! Set the line height
+rofi.eh:				2
+
+! Set the rofi width
+rofi.width:				100
+
+! Set the background opacity
+rofi.opacity:				85
+
+! Set the rofi font
+rofi.font:				System San Francisco Display 18
+
+! Set the default terminal
+rofi.terminal:				terminator
+
+! Set the ssh client
+rofi.ssh-client:			ssh
+
+! Set the ssh launch command
+rofi.ssh-command:			{terminal} -e "{ssh-client} {host}"
+
+! Set the run-command
+rofi.run-shell-command:			{terminal} -e "{cmd}"
+
