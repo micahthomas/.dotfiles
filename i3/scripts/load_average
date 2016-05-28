@@ -17,11 +17,12 @@
 load="$(cut -d ' ' -f1 /proc/loadavg)"
 cpus="$(nproc)"
 
+percent=$(awk "BEGIN { pc=100*${load}/1; i=int(pc); print (pc-i<0.5)?i:i+1 }")
 # full text
-echo "$load"
+echo "$percent%"
 
 # short text
-echo "$load"
+echo "$percent%"
 
 # color if load is too high
 awk -v cpus=$cpus -v cpuload=$load '

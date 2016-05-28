@@ -82,6 +82,7 @@ for_window [class="chrome" title=".*Gmail.*"] move to workspace $workspace6
 for_window [class="chrome" title=".*Hangouts.*"] move to workspace $workspace6
 for_window [class="Terminator" title=".*@.*"] move to workspace $workspace8
 for_window [class="Deja-dup"] move to workspace $workspace7
+for_window [class="(?i)conky"] floating enable border none
 
 # move focused container to workspace
 bindsym $mod+Shift+1 move container to workspace $workspace1
@@ -213,16 +214,13 @@ bindsym XF86AudioPrev exec playerctl previous
 bindsym $mod+Return exec i3-sensible-terminal
 bindsym $mod+Shift+q kill
 bindsym Print exec screenshot
-bindsym $mod+space exec --no-startup-id i3-dmenu-desktop --dmenu='rofi -i -dmenu -p "Launch: "'
-bindsym $mod+Tab exec --no-startup-id rofi -show window
-bindsym $mod+F2 exec --no-startup-id rofi -show run
-bindsym $mod+F3 exec --no-startup-id rofi -show ssh
+bindsym $mod+space exec --no-startup-id i3-dmenu-desktop --dmenu='rofi -i -dmenu -p "Launch: " -lines 5 -eh 2 -width 100 -padding 480 -opacity "85" -bw 0 -bc "$bg-color" -bg "$bg-color" -fg "$text-color" -hlbg "$bg-color" -hlfg "#9575cd" -font "System San Francisco Display 18"'
+bindsym $mod+Tab exec --no-startup-id rofi -show window -lines 5 -eh 2 -width 100 -padding 480 -opacity "85" -bw 0 -bc "$bg-color" -bg "$bg-color" -fg "$text-color" -hlbg "$bg-color" -hlfg "#9575cd" -font "System San Francisco Display 18"
+bindsym $mod+F2 exec --no-startup-id rofi -show run -lines 5 -eh 2 -width 100 -padding 480 -opacity "85" -bw 0 -bc "$bg-color" -bg "$bg-color" -fg "$text-color" -hlbg "$bg-color" -hlfg "#9575cd" -font "System San Francisco Display 18"
+bindsym $mod+F3 exec --no-startup-id rofi -show ssh -ssh-command 'terminator -e "{ssh-client} {host}"' -lines 5 -eh 2 -width 100 -padding 480 -opacity "85" -bw 0 -bc "$bg-color" -bg "$bg-color" -fg "$text-color" -hlbg "$bg-color" -hlfg "#9575cd" -font "System San Francisco Display 18"
+
 # startup
 exec_always --no-startup-id feh --bg-scale /home/micah/.wallpaper.jpg
 exec_always --no-startup-id xrandr --output DP-1 --pos 0x0 --output DP-5 --pos 1920x0
-exec_always --no-startup-id /home/micah/.xinitrc
-
-# Keys
-#exec_always xmodmap -e "clear lock" #disable caps lock switch
-
+exec --no-startup-id variety
 exec --no-startup-id compton -f
