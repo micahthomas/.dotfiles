@@ -220,7 +220,6 @@ bindsym $mod+F2 exec --no-startup-id rofi -show run -lines 5 -eh 2 -width 100 -p
 bindsym $mod+F3 exec --no-startup-id rofi -show ssh -ssh-command 'terminator -e "{ssh-client} {host}"' -lines 5 -eh 2 -width 100 -padding 480 -opacity "85" -bw 0 -bc "$bg-color" -bg "$bg-color" -fg "$text-color" -hlbg "$bg-color" -hlfg "#9575cd" -font "System San Francisco Display 18"
 
 # startup
-exec_always --no-startup-id feh --bg-scale /home/micah/.wallpaper.jpg
 exec_always --no-startup-id xrandr --output DP-1 --pos 0x0 --output DP-5 --pos 1920x0
 exec --no-startup-id variety
 exec --no-startup-id compton -f
