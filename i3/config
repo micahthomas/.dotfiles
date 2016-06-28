@@ -215,7 +215,8 @@ bindsym $mod+Return exec i3-sensible-terminal
 bindsym $mod+KP_Enter exec i3-sensible-terminal
 bindsym $mod+Shift+q kill
 bindsym Print exec screenshot
-bindsym $mod+space exec --no-startup-id i3-dmenu-desktop --dmenu='rofi -i -dmenu -p "Launch:"'
+#bindsym $mod+space exec --no-startup-id i3-dmenu-desktop --dmenu='rofi -i -dmenu -p "Launch:"'
+bindsym $mod+space exec --no-startup-id synapse
 bindsym $mod+Tab exec --no-startup-id rofi -show window
 bindsym $mod+F2 exec --no-startup-id rofi -show run
 bindsym $mod+F3 exec --no-startup-id rofi -show ssh
@@ -226,3 +227,4 @@ exec_always --no-startup-id xrdb /home/micah/.Xresources
 exec_always --no-startup-id /home/micah/.fehbg
 exec --no-startup-id variety
 exec --no-startup-id compton -f
+exec --no-startup-id synapse -s
